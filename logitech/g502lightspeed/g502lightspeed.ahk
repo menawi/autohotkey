@@ -13,24 +13,29 @@ WheelUp::ShiftAltTab
 
 ^!r:: Reload  ; Ctrl+Alt+R
 
+; --- logitech g502 lightspeed mouse wheel is supersensitive and needs delay
 ; WheelRight:: Send ^ {
 ; Tab } ; Switch to the next tab
 ; WheelLeft:: Send ^ + {
 ; Tab } ; Switch to the previous tab
+; ---
 
 WheelRight::
-    Sleep, 450 ; Wait for 350 milliseconds
+    Sleep, 250
     Send, ^{Tab}  ; Send Ctrl+Tab
 return
 
 WheelLeft::
-    Sleep, 450 ; Wait for 350 milliseconds
+    Sleep, 250
     Send, ^+{Tab}  ; Send Ctrl+Shift+Tab
 return
 
-XButton1:: Send, ^ c
-XButton2:: Send, ^ v
+; --- Currently using logitech GHub for this instead
+; XButton1:: Send, ^ c
+; XButton2:: Send, ^ v
+; ---
 
+; --- alt shift a => Suspend script
 !+a::
     Suspend, Toggle
     if A_IsSuspended
@@ -38,4 +43,4 @@ XButton2:: Send, ^ v
     else
         Menu, Tray, Icon, on.ico   ; Change icon back to "on" when resumed
 return
-
+; ---
